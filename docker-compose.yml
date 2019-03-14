@@ -1,0 +1,30 @@
+version: '3.6'
+
+services:
+  db:
+    restart: always
+    image: mysql:8
+    container_name: mysql_guid_db
+    environment:
+      - MYSQL_USER=myuser
+      - MYSQL_PASSWORD=mypass
+      - MYSQL_DATABASE=mydb
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - 3306:3306
+
+  python:
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+        - db
+    depends_on:
+        - db
+
+
+# volumes: 
+#   mysql-db1:
+#     external: true

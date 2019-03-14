@@ -1,0 +1,6 @@
+alembic
+factory_boy
+mysqlclient
+# mysql-connector-python-rf
+sqlalchemy
+sqlalchemy_utils
